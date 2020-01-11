@@ -1,0 +1,39 @@
+author: Per Buer
+description: Mongoose OS software to stream MQTT messages to a MCU and flashing RGB leds
+version: 0.1
+
+platform: esp32
+
+includes:
+  - include
+
+tags:
+  - c
+
+sources:
+  - src
+
+filesystem:
+  - fs
+
+libs:
+  - origin: https://github.com/mongoose-os-libs/neopixel
+  - origin: https://github.com/mongoose-os-libs/boards
+  - origin: https://github.com/mongoose-os-libs/ca-bundle
+  - origin: https://github.com/mongoose-os-libs/rpc-service-config
+  - origin: https://github.com/mongoose-os-libs/rpc-service-fs
+  - origin: https://github.com/mongoose-os-libs/rpc-service-ota
+  - origin: https://github.com/mongoose-os-libs/rpc-uart
+  - origin: https://github.com/mongoose-os-libs/wifi
+  - origin: https://github.com/mongoose-os-libs/aws
+  - origin: https://github.com/mongoose-os-libs/dash 
+  
+  
+manifest_version: 2017-09-29
+
+config_schema:
+  - ["pins.statusLed", "i", 2, { title: "LED for status."}]
+  - ["pins.ledStrip", "i", 23, { title: "GPIO pin for LED strip" }]
+  - ["leds.number", "i", 40, {title: "Number of LEDS on the strip"}]
+  - ["leds.decay", "i", 90, {title: "How fast does the LED decay (0-100) 0 means instant decay. 99 is the slowest. 100 is no decay"}]
+  - ["leds.decaydelay", "i", 300, {title: "Number of ms between each decay invokation"} ]
